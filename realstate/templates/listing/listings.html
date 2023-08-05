@@ -1,0 +1,145 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block title %} | Listings {% endblock %}
+
+{% block content %} {% load humanize %}
+<section class="about">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">Browse Our Properties</h1>
+        <p class="lead">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt,
+          pariatur!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-3 mb-5">
+  <ul class="nav_links">
+    <li>
+      <a href="{% url 'index' %}">
+        <i class="bi bi-house-door-fill"></i> Home</a
+      >
+    </li>
+    <li>/</li>
+    <li>Listings</li>
+  </ul>
+</section>
+
+<section class="listings">
+  <div class="container">
+    <div class="row justify-content-center">
+      {% if listings %} 
+      {% for listing in listings %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="" />
+          <h2 class="price">
+            <span class="badge badge-secondary text-white"
+              >${{ listing.price }}</span
+            >
+          </h2>
+
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <h4 class="text-primary">{{ listing.title }}</h4>
+              <p>
+                <i class="bi bi-geo-alt-fill text-secondary"></i> 
+                {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}
+              </p>
+            </div>
+            <hr />
+
+            <div class="row text-secondary py-2">
+              <div class="col-6 my-2">
+                <i class="bi bi-microsoft"></i>Sqft: {{ listing.sqft }}
+              </div>
+              <div class="col-6 my-2">
+                <i class="bi bi-car-front-fill"></i>Garage: {{ listing.garage }}
+              </div>
+              <div class="col-6 my-2">
+                <i class="fa-solid fa-bed"></i>Bedrooms: {{ listing.bedrooms }}
+              </div>
+              <div class="col-6 my-2">
+                <i class="fa-solid fa-bath"></i>Bathrooms: {{ listing.bathrooms }}
+              </div>
+            </div>
+            <hr />
+
+            <div class="row py-2 text-secondary gap-3">
+              <div class="col-12">
+                <i class="fas fa-user"></i> {{ listing.realtor }}
+              </div>
+              <div class="col-12">
+                <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}
+              </div>
+            </div>
+          </div>
+          <a
+            href="{% url 'listing' listing.id %}"
+            class="btn btn-primary btn-block"
+            >More Info</a
+          >
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <h3>No Listings Available</h3>
+      </div>
+      {% endif %}
+    </div>
+
+
+  <!-- pagination -->
+
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        {% if listings.has_other_pages %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center my-0">
+            {% if listings.has_previous %}
+            <li class="page-item ">
+              <a class="page-link" href="?page={{listings.previous_page_number}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a class="page-link">&laquo;</a>
+            </li>
+            {% endif %}
+
+            {% for i in listings.paginator.page_range %}
+              {% if listings.number == i %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{1}}">{{i}}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                  <a href="?page={{i}}" class="page-link">{{i}}</a>
+                </li>
+
+               {% endif %}
+            {% endfor %}
+
+            {% if listings.has_next %}
+              <li class="page-item">
+                <a href="?page={{listings.next_page_number}}" class="page-link">&raquo;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">&raquo;</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
