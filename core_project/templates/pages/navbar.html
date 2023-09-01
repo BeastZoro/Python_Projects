@@ -1,0 +1,85 @@
+{% load static %}
+
+<nav class="navbar_wrap px-0 ">
+  <section class="nav-head d-none d-md-flex">
+    <div class="logo_wrap">
+      <img src="{% static 'images/logo.png' %}" alt="logo" />
+    </div>
+
+    <div class="search_wrap">
+      <select class="category">
+        <option value=""></option>
+        <option value="one">one</option>
+        <option value="one">one</option>
+        <option value="one">one</option>
+      </select>
+
+      <div class="search_bar">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search products here..."
+        />
+        <p><i class="fa-solid fa-magnifying-glass"></i></p>
+      </div>
+    </div>
+
+    <div class="profile">
+      <p><i class="fa-regular fa-heart"></i></p>
+      <p><i class="fa-regular fa-user"></i></p>
+      <p><i class="fa-solid fa-bag-shopping"></i></p>
+    </div>
+  </section>
+
+  <section class="nav_bar">
+    <div class="nav_categories">
+      <p><i class="fa-solid fa-bars"></i></p>
+      <h2 class="my-0">Categories</h2>
+
+      <!-- subcategories -->
+      <div class="sub_categories d-none d-lg-block">
+        <ul>
+          <li><a href="#">New Arrivals <span class="arrow"><span><i class="fa-solid fa-chevron-right"></i></span></span></a></li>
+          <li><a href="#">Best Selling <span class="arrow"><span><i class="fa-solid fa-chevron-right"></i></span></span></a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Top 100 offer</a></li>
+          <li><a href="#">Sunglasses</a></li>
+          <li><a href="#">Watch</a></li>
+          <li><a href="#">ManaE <span>TM</span> Product</a></li>
+          <li><a href="#">Ladies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav_links">
+      <ul class="links_list">
+        <li><a href="#">Home <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span></a>
+          <ul class="sub_menu">
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Shop <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span></a>
+          <ul class="sub_menu">
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+          </ul></li>
+        <li><a href="#">Pages <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span></a>
+          <ul class="sub_menu">
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+            <li><a href="#">sub_menu</a></li>
+          </ul></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+</nav>
