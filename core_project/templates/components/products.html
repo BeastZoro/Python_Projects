@@ -1,0 +1,31 @@
+<section class="products">
+  <h2 class="prod_title">Trending Items</h2>
+    <div class="categories">
+      <ul>
+        <li class="active"><a href="{% url 'products_category' 0 %}">All</a></li>
+        {% for cat in categories %}
+        <li class=""><a href="{% url 'products_category' cat.id %}">{{ cat.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  
+    <div class="products_grid">
+      {% for prod in products %}
+      <div class="prod_card">
+        <img src="{{ prod.image.url }}" alt="{{prod.name}}" />
+        <div class="prod_info">
+          <p>{{prod.name}}</p>
+          <p>${{prod.price}}</p>
+        </div>
+  
+        <div class="offer">
+          {% if prod.offer %}
+          <p>{{prod.offer}}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  

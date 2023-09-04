@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block pagecontent %}
+{% extends 'base.html' %} {% load static %} {% block pagecontent %}
 <main class="main">
   <div class="main_wrap">
     <h3>up to 50% off</h3>
@@ -13,4 +13,21 @@
   </div>
 </main>
 
+{% include 'components/collections.html' %}
+
+{% include 'components/products.html' %}
+
+{% include 'components/mid_banner.html' %}
+
+{% include 'components/hot_items.html' %}
+
+{% include 'components/best_top_prods.html' %}
+
+{% include 'components/deal_timer.html' %}
+
+{% include 'components/blog.html' %}
+
+{% include 'components/payment_methods.html' %}
+
+{% include 'components/newsletter.html' %}
 {% endblock %}

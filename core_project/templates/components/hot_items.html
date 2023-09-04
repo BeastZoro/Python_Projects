@@ -1,0 +1,30 @@
+{% load static %}
+
+<section class="hot_items">
+  <h2 class="items_title">Hot Items</h2>
+
+  <div class="slider_wrap">
+    <p class="prev_item arrow_icon">
+      <i class="fa-solid fa-chevron-left"></i>
+    </p>
+    <div class="items_slider">
+      {% for prod in allproducts %}
+      <div class="items_card">
+        <img src="{{ prod.image.url }}" alt="{{prod.name}}" />
+        <div class="items_info">
+          <p>{{prod.name}}</p>
+          <p>${{prod.price}}</p>
+        </div>
+        <div class="offer">
+          {% if prod.offer %}
+          <p>{{prod.offer}}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="next_item arrow_icon">
+      <i class="fa-solid fa-chevron-right"></i>
+    </p>
+  </div>
+</section>
